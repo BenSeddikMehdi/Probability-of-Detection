@@ -1,0 +1,12 @@
+Probability of Detection with several values of SNR :
+
+I -	Create Function to calculate the probability of detection
+	 for each method of detecting : MF , 2C and ED.
+
+II-	Generate Multiple SNR values.
+
+III-	Plot the three graphs and compare them.
+
+By BENSEDDIK El Mehdi
+
+02/26/2019
