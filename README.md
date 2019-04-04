@@ -7,3 +7,8 @@ We calculate the probabilities of detection in a simple way which is : we choose
 ** Goertzel Algorithm :
 
 ![image](https://user-images.githubusercontent.com/43390471/55566797-b5999780-56fc-11e9-8258-d0aeae152907.png)
+
+
+We followed the same procedure for Matched_Filter's Method : 
+
+**
