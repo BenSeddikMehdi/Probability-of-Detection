@@ -11,4 +11,6 @@ We calculate the probabilities of detection in a simple way which is : we choose
 
 We followed the same procedure for Matched_Filter's Method : 
 
-**
+** Matched Filter :
+
+
