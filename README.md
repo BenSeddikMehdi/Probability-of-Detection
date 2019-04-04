@@ -2,7 +2,7 @@
 
 In this repository I tried to calculate the probabilities of detection of the received signal versus several values of SNR (Signal-to-Noise Ratio) for each detection method : Matched_Filter , Cross_Correlation , Energy_Detection and Goertzel_Algorithm over MATLAB. So, enough intro !! we have a lot things of to do, thus lets dig in.
 
-We calculate the probabilities of detection in a simple way which is : we choose a threshold ex : 100, and we compare the energy of the received signal with this threshold and we obtain either 1 or 0, In the end we plotted those values versus SNR'values.
+We calculate the probabilities of detection in a simple way which is : we choose a threshold := 100, and we compare the energy of the received signal with this threshold's value and we obtain either 1 or 0, In the end we plotted those values versus SNR'values.
 
 ** Goertzel Algorithm :
 
