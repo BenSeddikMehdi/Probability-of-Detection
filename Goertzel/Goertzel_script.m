@@ -4,12 +4,12 @@ clear                                  % Clear all data stored in variables
 Am = 1;                                % 1V Amplitude     
 SR = 48000;                            % 48 KHz Smapling Rate
 f0 = 13e+3;                            % 20 KHz
-f1 = 10e+3;                            % 10 KHz
-f2 = 4e+3;                             % 10 KHz
+%   f1 = 10e+3;                            % 10 KHz
+%   f2 = 4e+3;                             % 10 KHz
 duration = (127/SR);                   % ~ 2.6 ms 
 t = 0:1/SR:duration;                   % Time Vector
 %%
-sinusPulse = Am*sin(2*pi*f0*t);  % Signal with multiple frequencies
+sinusPulse = Am*sin(2*pi*f0*t);  % Signal with single frequency
 mySNR = -30:30;
 snrValues(sinusPulse,mySNR,100)
 %%
