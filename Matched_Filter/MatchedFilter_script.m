@@ -1,4 +1,4 @@
-%% Matched Filter Probability of Detection
+%% Matched Filter Probability of Detection Versus SNR (dB)
 %%
 clear
 mySNR = -30:30;
