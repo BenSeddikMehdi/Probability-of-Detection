@@ -3,19 +3,16 @@
 clear                                  % Clear all data stored in variables
 Am = 1;                                % 1V Amplitude     
 SR = 48000;                            % 48 KHz Smapling Rate
-f0 = 13e+3;                            % 20 KHz
-%   f1 = 10e+3;                            % 10 KHz
-%   f2 = 4e+3;                             % 10 KHz
+f0 = 20e+3;                            % 20 KHz
 duration = (127/SR);                   % ~ 2.6 ms 
 t = 0:1/SR:duration;                   % Time Vector
 %%
 sinusPulse = Am*sin(2*pi*f0*t);  % Signal with single frequency
 mySNR = -30:30;
-snrValues(sinusPulse,mySNR,100)
+threshold = 100;
+snrValues(sinusPulse,mySNR,threshold,f0,SR)
 %%
-function snrValues(yourSignal,snr,threshold) 
-    f0 = 13e+3;
-    SR = 48000;
+function snrValues(yourSignal,snr,threshold,f0,SR) 
    for i = 1:length(snr)
             yourSignal = awgn(yourSignal,snr(i));
             find_PD_GA(f0,SR,yourSignal,threshold);        
