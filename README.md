@@ -23,4 +23,5 @@ We followed the same procedure for Matched_Filter's Method :
 
 ** Energy Detection :
 
-![image](https://user-images.githubusercontent.com/43390471/55720685-b2a2ed80-5a01-11e9-92fd-9e88848884a9.png)
+![image](https://user-images.githubusercontent.com/43390471/55793494-4f798f80-5ac3-11e9-9ec5-52cabd0fe7d2.png)
+
