@@ -10,7 +10,7 @@ t = 0:1/SR:duration;                   % Time Vector
 sinusPulse = Am*sin(2*pi*f0*t); 
 mySNR = -30:1:30;           % SNR buffer
 threshold = 150;
-snrValues(sinusPulse,mySNR,threshold)
+detectProbability(sinusPulse,mySNR,threshold)
 %%
 function detectProbability(yourSignal,snr,threshold) 
 N = length(yourSignal);
@@ -25,7 +25,7 @@ N = length(yourSignal);
             end
             Pd_buff(j) = sum(a > threshold)/N;
         end
-         
+        Pd = sum(Pd_buff)/100;   
         plot(snr(i),Pd_ED,'b+');
         hold on
         title('Energy Detection')
@@ -35,5 +35,5 @@ N = length(yourSignal);
     hold off
 end
 %% 
-% 
+% By BENSEDDIK El Mehdi
 
