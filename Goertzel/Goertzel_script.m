@@ -14,41 +14,31 @@ snrValues(sinusPulse,mySNR,threshold,f0,SR)
 %%
 function snrValues(yourSignal,snr,threshold,f0,SR) 
    for i = 1:length(snr)
-            yourSignal = awgn(yourSignal,snr(i));
-            find_PD_GA(f0,SR,yourSignal,threshold);        
-            load Pd_GA.mat Pd   
-            plot(snr(i),Pd,'r+');
-            hold on
-            title('Goertzel Algorithm')
-            xlabel('SNR (db)')
-            ylabel('Probaility of Detection')
+       for j = 1:100
+           Pd_buff(100) = 0;
+           yourSignal = awgn(yourSignal,snr(i));
+           N = length(yourSignal);
+           Magnitude(N) = 0;
+           k = round(0.5 + N*f0/SR);
+           w = 2*pi*k/N;
+           cosine = cos(w);
+           coeff = 2*cosine;
+           Q2 = 0;
+           Q1 = 0;
+           for k = 1:N
+               Q0 = yourSignal(k) + coeff*Q1 - Q2;
+               Q2 = Q1;
+               Q1 = Q0;
+               Magnitude(k) = sqrt(Q1*Q1 + Q2*Q2 - Q1*Q2*coeff);
+           end
+           Pd_buff(j) = sum(Magnitude > threshold)/N;
+       end
+       Pd = sum(Pd_buff)/100;
+       plot(snr(i),Pd,'r+');
+       hold on
+       title('Goertzel Algorithm')
+       xlabel('SNR (db)')
+       ylabel('Probaility of Detection')
    end
    hold off
-end
-%% 
-% 
-
-
-function find_PD_GA(f0,sampleRate,noisySignal,threshold)
-    N = length(noisySignal);
-    Magnitude(length(noisySignal)) = 0; 
-    Pdga(100) = 0;
-    for i = 1:100
-        k = round(0.5 + N*f0/sampleRate);
-        w = 2*pi*k/N;
-        cosine = cos(w);
-        coeff = 2*cosine;
-        Q2 = 0;
-        Q1 = 0;
-        for j = 1:N
-            Q0 = noisySignal(j) + coeff*Q1 - Q2;
-            Q2 = Q1;
-            Q1 = Q0;
-            Magnitude(j) = sqrt(Q1*Q1 + Q2*Q2 - Q1*Q2*coeff);
-        end
-        Pdg = Magnitude > threshold;
-        Pdga(i) = sum(Pdg)/N;
-    end
-    Pd = sum(Pdga)/100;
-    save PD_GA.mat Pd
 end
